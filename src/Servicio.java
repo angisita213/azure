@@ -1,13 +1,11 @@
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
 class Servicio {
-    private static final String URL = "";
+    private static final String URL = "https://function-192-adso.azurewebsites.net/api/httptrigger1";
 
     public String realizarLlamadaHttp() {
         try {
@@ -17,11 +15,27 @@ class Servicio {
             con.setRequestProperty("Content-Type", "application/json");
             con.setDoOutput(true);
 
-            String jsonInputString = "{\"subject\": \"Correo de prueba Azure\",\n"
-            		+ "	\"to\": \"angaritagerman@hotmail.com\",\n"
-            		+ "	\"dataTemplate\": {\"name\": \"ADSO\"},\n"
-            		+ "	\"templateName\": \"registro.html\"}";
-            try(OutputStream os = con.getOutputStream()) {
+            // Obtener los detalles del producto desde el Controlador
+            String productName = Controlador.productName;
+            String productDescription = Controlador.productDescription;
+            int quantity = Controlador.quantity;
+            double totalPrice = Controlador.totalPrice;
+
+            // Construir el cuerpo del JSON mediante concatenación
+            String jsonInputString = "{"
+                    + "\"subject\": \"Confirmación de Compra\","
+                    + "\"to\": \"vgmiguel16@gmail.com\","
+                    + "\"dataTemplate\": {"
+                    + "    \"name\": \"Miguel Vasquez\","
+                    + "    \"producto\": \"" + productName + "\","
+                    + "    \"descripcion\": \"" + productDescription + "\","
+                    + "    \"cantidad\": " + quantity + ","
+                    + "    \"precio\": \"" + String.format("%.2f", totalPrice) + "\""
+                    + "},"
+                    + "\"templateName\": \"productos.html\""
+                    + "}";
+
+            try (OutputStream os = con.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
