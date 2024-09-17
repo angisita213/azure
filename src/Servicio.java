@@ -5,7 +5,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 class Servicio {
-    private static final String URL = "https://function-192-adso.azurewebsites.net/api/httptrigger1";
+    private static final String URL = "https://banco-2-0.azurewebsites.net/api/httptrigger1" + //
+                "";
 
     public String realizarLlamadaHttp() {
         try {
@@ -24,15 +25,15 @@ class Servicio {
             // Construir el cuerpo del JSON mediante concatenación
             String jsonInputString = "{"
                     + "\"subject\": \"Confirmación de Compra\","
-                    + "\"to\": \"vgmiguel16@gmail.com\","
+                    + "\"to\": \"dahianadiazg4@gmail.com\","
                     + "\"dataTemplate\": {"
-                    + "    \"name\": \"Miguel Vasquez\","
+                    + "    \"name\": \"Angie Diaz\","
                     + "    \"producto\": \"" + productName + "\","
                     + "    \"descripcion\": \"" + productDescription + "\","
                     + "    \"cantidad\": " + quantity + ","
                     + "    \"precio\": \"" + String.format("%.2f", totalPrice) + "\""
                     + "},"
-                    + "\"templateName\": \"productos.html\""
+                    + "\"templateName\": \"belleza.html\""
                     + "}";
 
             try (OutputStream os = con.getOutputStream()) {

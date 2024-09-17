@@ -42,11 +42,11 @@ public class Main {
 
         // Mostrar menú de productos
         while (true) {
-            System.out.println("\n=== Menú ===");
-            System.out.println("1. Comprar zapatos");
-            System.out.println("2. Comprar maleta");
-            System.out.println("3. Comprar pocillo");
-            System.out.println("4. Cerrar sesión");
+            System.out.println("\n=== Menu ===");
+            System.out.println("1. Comprar comida");
+            System.out.println("2. Comprar ropa");
+            System.out.println("3. Comprar electrodomesticos");
+            System.out.println("5. Cerrar sesión");
             System.out.print("Seleccione una opción: ");
             int option = scanner.nextInt();
             scanner.nextLine();  // Limpiar el buffer
@@ -61,13 +61,13 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    productName = "Zapatos";
+                    productName = "Comida";
                     break;
                 case 2:
-                    productName = "Maleta";
+                    productName = "Ropa";
                     break;
                 case 3:
-                    productName = "Pocillo";
+                    productName = "Electrodomesticos";
                     break;
                 default:
                     System.out.println("Opción inválida. Inténtelo de nuevo.");
@@ -110,9 +110,9 @@ public class Main {
     }
 
     private static void initializeProducts() {
-        productCatalog.put("Zapatos", new Product("Zapatos", 50.0, "Zapatos cómodos y elegantes para cualquier ocasión."));
-        productCatalog.put("Maleta", new Product("Maleta", 80.0, "Maleta resistente y espaciosa para tus viajes."));
-        productCatalog.put("Pocillo", new Product("Pocillo", 20.0, "Pocillo de cerámica para disfrutar tu café."));
+        productCatalog.put("Comida", new Product("Comida", 60.0, "Comida perfecta para cualquier ocasión."));
+        productCatalog.put("Ropa", new Product("Ropa", 80.0, "Ropa resistente y flexible para cualquier ocasión."));
+        productCatalog.put("Electrodomesticos", new Product("Electrodomesticos", 90.0, "Pocillo de cerámica para disfrutar tu café."));
     }
 
     private static class Product {
